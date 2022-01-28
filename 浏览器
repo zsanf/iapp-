@@ -1,0 +1,77 @@
+首先需要创建一个控件“线性布局”，在“线性布局”里面创建“线性布局
+”“编辑框”“浏览器”
+
+第一个线性布局属性
+width=-1
+height=-1
+orientation=vertical
+
+第二个线性布局属性
+width=-1
+height=55dp
+orientation=horizontal
+BackgroundColor=#ff0081ff
+
+浏览器属性
+width=-1
+height=-1
+
+编辑框属性 在线性布局1里
+
+width=-1
+height=-2
+text=网址标题,加载进度
+textColor=#ffffffff
+textSize=18sp
+layout_marginLeft=10dp
+layout_margintop=15dp
+layout_marginleft=3dp
+
+创建完成之后
+
+图像按钮 单击触屏事件
+输入
+ug(6,"text",a)
+//6代表编辑框id，text代表文本，a带表变量
+//理解为获取id6的控件属性是否为text
+us(9,"url",a)
+//9代表浏览器的id，URL代表网址，a代表变量
+//理解为设置id9的控件属性为url
+
+接下来就是进度，标题显示了！
+浏览器 浏览器事件 第一个
+
+f(st_nS==100)
+{  
+ug(9,"title",a) 
+//9代表浏览器的id
+ us(8,"text",a)
+ //8代表文本id
+}
+//stns代表进度 所以stns等于等于100代表进度达到100时，显示标题
+ else
+ {
+ ss("正在加载..("+ st_nS +")",a) 
+ //加stns加是进度
+ //正在加载。。你可以随便改
+ us(8,"text",a)
+ //8我上面讲过
+ //设置id8的文本
+ }
+ //否则显示进度
+
+接下来就是文件下载（只支持复制下载链）
+浏览器事件 最后一个
+输入代码
+
+s url=st_url
+//变量url等于被载入下载链接
+utw(null,"下载链接",url,"复制",false,v)
+//弹窗提示，标题下载链接，选项复制
+//null代表无用的，url代表被载入文件下载链接
+{ 
+sxb(url) 
+//将被载入文件链接写入剪贴板
+ tw("复制完成",0)
+ //提示复制完成
+ }
